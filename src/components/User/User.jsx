@@ -1,18 +1,31 @@
-import './styles.scss';
-import Dots from '../../icons/dots.svg';
 import Tag from '../Tag';
+import CustomModal from '../CustomModal';
+import Dots from '../../icons/dots.svg';
+import './styles.scss';
+import { useState } from 'react';
+import { Dropdown, Modal } from 'antd';
+import PERMISSIONS from '../../consts/permissions';
+import USER_ACTIONS from '../../consts/userActions';
 
 const User = (props) => {
+  const { name, email, tags, imgUrl, onChangeUserPermissions, onChangeUserDelete } = props;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { name, email, tags, imgUrl } = props;
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
-  const handleUserChange = () => {
-    console.log('userChange')
-  }
+  const handleClick = ({ key }) => {
+    if (key === 'changeRights') {
+      setIsModalOpen(true);
+    } else if (key === 'deleteUser') {
+      onChangeUserDelete(email);
+    }
+  };
 
   return (
-    <div className="user">
-      <img src={imgUrl} alt="userLogo" className="logo" width={64} height={64}/>
+    <div className="user" key={email}>
+       <img src={imgUrl} alt="userLogo" className="logo" width={64} height={64}/>
       <span className="info">
         <div className="personalData">
           <span className="name">
@@ -30,7 +43,28 @@ const User = (props) => {
           }
         </div>
       </span>
-      <img src={Dots} alt='dots' className="userChange" onClick={handleUserChange}/>
+      <Dropdown trigger={['click']} menu={{ style: {borderRadius: '15px'}, items: USER_ACTIONS, onClick: handleClick }}>
+        <img src={Dots} alt='dots' className="userChange"/>
+      </Dropdown>
+      {/* <Modal 
+        open={isModalOpen}
+        closable={false}
+        onCancel={handleCancel}
+        footer={null}
+        cancelButtonProps={{ style: { display: 'none' } }}
+        width={280}
+      >
+        <div className="permissions">
+          {PERMISSIONS.map((permission) => (
+            <label className="checkbox">
+              <input type='checkbox' checked={tags.includes(permission.title) || tags.length === PERMISSIONS.length - 1} value={permission.title} onChange={(e) => onChangeUserPermissions(e.target.checked, e.target.value, email)}/>
+              <p className="checkboxTitle">
+                {permission.title}
+              </p>
+            </label>
+          ))}
+        </div>
+      </Modal> */}
     </div>
   )
 };

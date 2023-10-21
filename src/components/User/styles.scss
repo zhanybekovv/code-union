@@ -43,7 +43,44 @@
   }
 }
 
+.ant-dropdown-menu-item {
+  height: 35px;
+  color: #424F5E;
+  font-family: Futura PT;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px
+}
+
+.ant-modal-content {
+  border-radius: 15px !important;
+  width: 100%;
+}
+
+.permissions {
+  display: flex;
+  flex-direction: column;
+  accent-color: #5856D6;
+}
+
+.checkbox {
+  display: flex;
+  padding-bottom: 11px;
+}
+
+.checkboxTitle {
+  color: #424F5E;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  margin: unset;
+  margin-left: 9px;
+}
+
 .userChange {
   position: absolute;
-  right: 29px
+  right: 29px;
+  cursor: pointer;
 }
