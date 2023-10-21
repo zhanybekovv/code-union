@@ -1,0 +1,50 @@
+.searchInput {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #C1C1CB;
+  text-overflow: ellipsis;
+  font-family: Futura PT;
+  font-size: 18px;
+  font-weight: 400;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.searchInput::placeholder {
+  color: #9494A0;
+  font-family: Futura PT;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  width: 16px;
+  height: 16px;
+}
+
+.search {
+  margin-right: 10px;
+  margin-left: 96px;
+  position: relative;
+  width: inherit;
+}
+
+.animation_trigger{
+  display: flex;
+  position: relative;
+  animation: animateElement 1.5s alternate;
+}
+
+@keyframes animateElement{
+  from{  
+      width: 0%;
+  }
+  100%{
+      width: 100%;
+  }
+}

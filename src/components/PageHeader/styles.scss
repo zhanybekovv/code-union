@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 29px; 
+
+  .title {
+    color: #424F5E;
+    font-size: 26px;
+    font-weight: 500;
+  }
+  
+  .buttons {
+    display: flex;
+
+    &.fullWidth {
+      width: 100%;
+    }
+
+    .addUser {
+      border-radius: 10px;
+      background: #32C076;
+      border: none;
+      padding-left: 14px;
+      padding-right: 14px;
+
+      .title {
+        color: #F9FAFB;
+        text-align: center;
+        font-family: Futura PT;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 450;
+        line-height: 20px;
+        white-space: nowrap;
+        text-align: center;
+      }
+    }
+  }
+
+  border-bottom: 1px solid #EBEBF0;
+}
