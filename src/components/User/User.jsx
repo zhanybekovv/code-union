@@ -1,6 +1,6 @@
 import Tag from '../Tag';
-import CustomModal from '../CustomModal';
 import Dots from '../../icons/dots.svg';
+import UnknownIcon from '../../icons/unknownIcon.svg';
 import './styles.scss';
 import { useState } from 'react';
 import { Dropdown, Modal } from 'antd';
@@ -8,29 +8,33 @@ import PERMISSIONS from '../../consts/permissions';
 import USER_ACTIONS from '../../consts/userActions';
 
 const User = (props) => {
-  const { name, email, tags, imgUrl, onChangeUserPermissions, onChangeUserDelete } = props;
+  const { name, email, tags, imgUrl, onChangeUserPermissions, onChangeUserDelete, notAuthorized = false } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+ 
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
   const handleClick = ({ key }) => {
     if (key === 'changeRights') {
-      setIsModalOpen(true);
-    } else if (key === 'deleteUser') {
+      setIsModalOpen(true)
+    }
+    if (key === 'deleteUser') {
       onChangeUserDelete(email);
     }
   };
 
   return (
     <div className="user" key={email}>
-       <img src={imgUrl} alt="userLogo" className="logo" width={64} height={64}/>
+       <img src={imgUrl || UnknownIcon} alt="userLogo" className="logo" width={64} height={64}/>
       <span className="info">
         <div className="personalData">
           <span className="name">
             {name}
           </span>
+          {
+            notAuthorized && <span className="notAuthorized">Не авторизирован</span>
+          }
           <span className="email">
             {email}
           </span>
@@ -46,7 +50,7 @@ const User = (props) => {
       <Dropdown trigger={['click']} menu={{ style: {borderRadius: '15px'}, items: USER_ACTIONS, onClick: handleClick }}>
         <img src={Dots} alt='dots' className="userChange"/>
       </Dropdown>
-      {/* <Modal 
+      <Modal 
         open={isModalOpen}
         closable={false}
         onCancel={handleCancel}
@@ -64,7 +68,7 @@ const User = (props) => {
             </label>
           ))}
         </div>
-      </Modal> */}
+      </Modal>
     </div>
   )
 };

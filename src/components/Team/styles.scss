@@ -3,4 +3,11 @@
   height: 67%;
   background-color: #F9FAFB;
   border-radius: 15px;
+  overflow: auto;
+}
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }

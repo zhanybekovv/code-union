@@ -2,10 +2,12 @@ import SearchLogo from '../../icons/searchLogo.svg';
 import './styles.scss';
 
 const Search = (props) => {
-  const { searchIsClicked, handleSearchClick } = props;
+  const { searchIsClicked, handleSearchClick, filterUsers, users } = props;
 
   const handleChange = (e) => {
-    console.log('e', e.target.value)
+    const { value = '' } = e.target;
+    const newUsers = users.filter((user) => user.email.includes(value));
+    filterUsers(newUsers);
   };
 
   return (
