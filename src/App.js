@@ -1,23 +1,26 @@
 import Sidebar from './components/Sidebar';
 import Team from './components/Team';
 import './App.scss';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('team');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggle = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen]);
 
   const renderCurrentPage = useMemo(() => {
     switch (currentPage) {
       case 'team':
-        return <Team pageTitle={'Команда'}/>
+        return <Team pageTitle={'Команда'} toggleSideMenu={toggle}/>
       default:
         return <div>Lol kek</div>
     }
-  }, [currentPage])
+  }, [currentPage, toggle])
 
   return (
     <div className="App">
-      <Sidebar />
+      <Sidebar isMenuOpen={isMenuOpen} />
       {renderCurrentPage}
     </div>
   );

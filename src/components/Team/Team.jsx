@@ -5,10 +5,11 @@ import PageHeader from '../PageHeader';
 import User from '../User';
 import './styles.scss';
 import { USERS } from '../../users.js';
+import isMobile from '../../consts/isMobile';
 import PERMISSIONS from '../../consts/permissions.js';
 
 
-const Team = ({ pageTitle }) => {
+const Team = ({ pageTitle, toggleSideMenu }) => {
   const [users, setUsers] = useState(USERS);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -66,7 +67,13 @@ const Team = ({ pageTitle }) => {
   return (
     <PageWrapper>
       <div className="team">
-        <PageHeader title={pageTitle} onUserAdd={handleAddUser} filterUsers={filterUsers} users={ref.current}/>
+        <PageHeader 
+          title={pageTitle}
+          onUserAdd={handleAddUser}
+          filterUsers={filterUsers}
+          users={ref.current}
+          toggleSideMenu={toggleSideMenu}
+        />
         {
           users.map((user) => (
             <User
@@ -97,8 +104,8 @@ const Team = ({ pageTitle }) => {
             color: '#F9FAFB',
             paddingTop: '21px',
             paddingBottom: '21px',
-            paddingLeft: '168px',
-            paddingRight: '168px',
+            paddingLeft: `${isMobile ? '118px' : '168px'}`,
+            paddingRight: `${isMobile ? '118px' : '168px'}`,
             display: 'flex',
             alignItems: 'center',
             marginInlineStart: 'unset'

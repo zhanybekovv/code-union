@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Modal, Select, Space, Input } from 'antd';
+import isMobile from '../../consts/isMobile';
+import MenuIcon from '../../icons/menuIcon.svg';
 import Search from '../Search';
 import CloseIcon from '../../icons/closeIcon.svg';
 import PERMISSIONS from '../../consts/permissions';
@@ -9,7 +11,7 @@ import './styles.scss';
 const { Option } = Select;
 
 const PageHeader = (props) => {
-  const { title, onUserAdd, filterUsers, users } = props;
+  const { title, onUserAdd, filterUsers, users, toggleSideMenu } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [email, setEmail] = useState();
@@ -57,6 +59,7 @@ const PageHeader = (props) => {
   return (
     <div className="header">
       <span className="title">
+        {isMobile && <img src={MenuIcon} alt="menu-icon" className="menuIcon" onClick={toggleSideMenu}/>}
         {title}
       </span>
       <div className={`buttons ${searchIsClicked ? 'fullWidth' : ''}` }>
@@ -81,8 +84,8 @@ const PageHeader = (props) => {
             color: '#F9FAFB',
             paddingTop: '21px',
             paddingBottom: '21px',
-            paddingLeft: '118px',
-            paddingRight: '118px',
+            paddingLeft: `${isMobile ? '84px' : '118px'}`,
+            paddingRight: `${isMobile ? '84px' : '118px'}`,
             display: 'flex',
             alignItems: 'center',
             marginInlineStart: 'unset'
@@ -135,8 +138,8 @@ const PageHeader = (props) => {
             color: '#F9FAFB',
             paddingTop: '21px',
             paddingBottom: '21px',
-            paddingLeft: '168px',
-            paddingRight: '168px',
+            paddingLeft: `${isMobile ? '118px' : '168px'}`,
+            paddingRight: `${isMobile ? '118px' : '168px'}`,
             display: 'flex',
             alignItems: 'center',
             marginInlineStart: 'unset'
