@@ -7,7 +7,7 @@ const Search = (props) => {
 
   const handleChange = (e) => {
     const { value = '' } = e.target;
-    const newUsers = users.filter((user) => user.email.includes(value));
+    const newUsers = users.filter((user) => user.email.toLowerCase().includes(value.toLowerCase()));
     filterUsers(newUsers);
   };
 
