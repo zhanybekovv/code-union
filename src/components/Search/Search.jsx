@@ -1,8 +1,11 @@
+import { useRef } from 'react';
 import SearchLogo from '../../icons/searchLogo.svg';
 import './styles.scss';
 
 const Search = (props) => {
   const { searchIsClicked, handleSearchClick, filterUsers, users } = props;
+  // const isMobile = window.innerWidth() <= 400;
+  const isMobileRef = useRef(window.innerWidth <= 400);
 
   const handleChange = (e) => {
     const { value = '' } = e.target;
@@ -13,7 +16,7 @@ const Search = (props) => {
   return (
     <div className="search">
       {
-        searchIsClicked ? (
+        searchIsClicked || isMobileRef.current ? (
           <div className="animation_trigger">
             <input className="searchInput" placeholder="Поиск по Email" aria-label="search" onChange={handleChange} />
             <img

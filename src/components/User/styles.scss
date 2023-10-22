@@ -97,3 +97,66 @@
   right: 29px;
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 400px){
+  .user {
+    display: flex;
+    padding: 10px 15px;
+    position: relative;
+  
+    .info {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  
+      .personalData {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+      }
+  
+    }
+    &:hover {
+      background-color: #EFEFF6;
+    }
+  
+    .name {
+      font-family: Futura PT;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #424F5E;
+      font-style: normal;
+      line-height: 20px; /* 111.111% */
+      margin-right: 11px;
+    }
+  
+    .notAuthorized {
+      font-family: Futura PT;
+      font-size: 14px;
+      font-weight: 450;
+      line-height: 20px;
+      color: #9494A0;
+    }
+  
+    .email {
+      color: #9494A0;
+      font-family: Futura PT;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px; /* 111.111% */
+    }
+
+    .tags {
+      flex-wrap: wrap;
+    }
+  }
+
+  .userChange {
+    right: 15px;
+  }
+}

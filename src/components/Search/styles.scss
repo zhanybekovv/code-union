@@ -35,7 +35,7 @@
   cursor: pointer;
 }
 
-.animation_trigger{
+.animation_trigger {
   display: flex;
   position: relative;
   animation: animateElement 1.5s alternate;
@@ -48,4 +48,30 @@
   100%{
       width: 100%;
   }
+}
+
+@media screen and (max-width: 400px){
+  .animation_trigger {
+    animation: unset;
+  }
+
+  .search {
+    margin: unset;
+  }
+
+  .searchInput {
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .searchInput::placeholder {
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .searchIcon {
+    top: 9px;
+  }
+  
+
 }

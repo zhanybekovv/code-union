@@ -71,3 +71,30 @@
   right: 25px;
   top: 18px;
 }
+
+@media screen and (max-width: 400px){
+  .header {
+    flex-direction: column;
+    padding: 15px 15px; 
+    border-bottom: none;
+
+    .title {
+      text-align: start;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      flex-direction: column;
+
+      .addUser {
+        margin-top: 7px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+        .title {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -11,3 +11,11 @@
   justify-content: center;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 400px){
+  .team {
+    width: 100%;
+    height: 100%;
+    border-radius: unset;
+  } 
+}
